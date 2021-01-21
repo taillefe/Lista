@@ -16,7 +16,7 @@
 
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/imagen"
             android:layout_width="92dp"
             android:layout_height="67dp"
             app:srcCompat="@raw/emoji" />

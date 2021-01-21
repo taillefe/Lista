@@ -1,20 +1,33 @@
 package com.aulanosa.lista;
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.InputStream;
 import java.util.ArrayList;
 public class MyAdapter extends BaseAdapter {
     private Context context;
     private int layout;
     private ArrayList<String> names;
+    private ArrayList<String> imagenes;
 
-    public MyAdapter(Context context, int layout, ArrayList<String> names) {
+    public MyAdapter(Context context, int layout, ArrayList<String> names,ArrayList<String> imagenes) {
         this.context = context;
         this.layout = layout;
         this.names = names;
+        this.imagenes = imagenes;
     }
 
     @Override
@@ -44,7 +57,44 @@ public class MyAdapter extends BaseAdapter {
 // Referenciamos el elemento a modificar y lo rellenamos
         TextView textView = (TextView) v.findViewById(R.id.textView);
         textView.setText(currentName);
+
+       //lo mismo para la imagen
+        // Valor actual según la posición
+        String currentImagen = imagenes.get(position);
+// Referenciamos el elemento a modificar y lo rellenamos
+        @SuppressLint("WrongViewCast") ImageView imageView = (ImageView) v.findViewById(R.id.imageView);
+      //  imageView.setImageURI(Uri.parse(currentImagen));
+      //  imageView.setImageBitmap(StringToBitMap(currentImagen));
+
+        File imagenArchivo= new  File(currentImagen);
+      //  imageView.setImageURI(Uri.fromFile(imagenArchivo));
+
+
+
+        Log.i("ruta",imagenArchivo.getAbsolutePath());
+
+
+
+
+            Bitmap myBitmap = BitmapFactory.decodeFile(imagenArchivo.getAbsolutePath());
+            imageView.setImageBitmap(myBitmap);
+
+
 //Devolvemos la vista inflada
         return v;
+    }
+
+
+    public Bitmap StringToBitMap(String image){
+        try{
+            byte [] encodeByte= Base64.decode(image,Base64.DEFAULT);
+
+            InputStream inputStream  = new ByteArrayInputStream(encodeByte);
+            Bitmap bitmap  = BitmapFactory.decodeStream(inputStream);
+            return bitmap;
+        }catch(Exception e){
+            e.getMessage();
+            return null;
+        }
     }
 }

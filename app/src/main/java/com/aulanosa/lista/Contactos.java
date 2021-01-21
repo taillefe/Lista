@@ -1,8 +1,10 @@
 package com.aulanosa.lista;
 
+import android.media.Image;
+
 public class Contactos {
 
-
+    String imagen;
     String nombre;
     String apellidos;
     String telefono;
@@ -10,14 +12,19 @@ public class Contactos {
     String direccion;
     String observaciones;
 
-    public Contactos(String nombre, String apellidos, String telefono,
+    public Contactos(String imagen, String nombre, String apellidos, String telefono,
                      String email, String direccion, String observaciones) {
+        this.imagen = imagen;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.telefono = telefono;
         this.email = email;
         this.direccion = direccion;
         this.observaciones = observaciones;
+    }
+
+    public String getImagen() {
+        return imagen;
     }
 
     public String getNombre() {
@@ -42,6 +49,10 @@ public class Contactos {
 
     public String getObservaciones() {
         return observaciones;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
 
     public void setNombre(String nombre) {

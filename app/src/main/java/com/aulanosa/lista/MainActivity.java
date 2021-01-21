@@ -3,14 +3,17 @@ package com.aulanosa.lista;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -21,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ListView lista;
     private ArrayList<String> names;
+    private ArrayList<String> imagenes;
   //  private String[] listanombres = {"Pedro","Ramón","Jose","Luisa","Antonio","Hugo"};
 
     private ArrayList<Contactos> listaContactos;
@@ -36,17 +40,22 @@ public class MainActivity extends AppCompatActivity {
 
         listaContactos = new ArrayList<Contactos>();
 
-        Contactos contacto1 = new Contactos("Pedro", "Perez", "444555666","pedro@gmail.com",
+        // imagenes como cadena de bits
+        // Blob blob = rs.getBlob("image");
+        //        foto = ImageIO.read(blob.getBinaryStream());
+
+
+        Contactos contacto1 = new Contactos("C:\\Users\\PC33\\Desktop\\emoji.png","Pedro", "Perez", "444555666","pedro@gmail.com",
                 "libertad, 3", "perfecto");
-        Contactos contacto2 = new Contactos("Ramón", "Rodriguez", "333555666","ramon@gmail.com",
+        Contactos contacto2 = new Contactos("@raw/emoji.png","Ramón", "Rodriguez", "333555666","ramon@gmail.com",
                 "camelias, 1", "imperfecto");
-        Contactos contacto3 = new Contactos("Jose", "Blanco", "444555444","jose@gmail.com",
+        Contactos contacto3 = new Contactos("@raw/emoji.png","Jose", "Blanco", "444555444","jose@gmail.com",
                 "rosas, 23", "tranquilo");
-        Contactos contacto4 = new Contactos("Luisa", "Gutierrez", "666555666","luisa@gmail.com",
+        Contactos contacto4 = new Contactos("@raw/emoji.png","Luisa", "Gutierrez", "666555666","luisa@gmail.com",
                 "colon, 3", "locuaz");
-        Contactos contacto5 = new Contactos("Antonio", "Lopez", "777555666","antonio@gmail.com",
+        Contactos contacto5 = new Contactos("@raw/emoji.png","Antonio", "Lopez", "777555666","antonio@gmail.com",
                 "real, 9", "grandioso");
-        Contactos contacto6 = new Contactos("Hugo", "García", "888555666","hugo@gmail.com",
+        Contactos contacto6 = new Contactos("@raw/emoji.png","Hugo", "García", "888555666","hugo@gmail.com",
                 "lugar, 6", "fenomenal");
 
         listaContactos.add(contacto1);
@@ -55,6 +64,16 @@ public class MainActivity extends AppCompatActivity {
         listaContactos.add(contacto4);
         listaContactos.add(contacto5);
         listaContactos.add(contacto6);
+
+        imagenes = new ArrayList<String>();
+
+        imagenes.add(listaContactos.get(0).getImagen());
+        imagenes.add(listaContactos.get(1).getImagen());
+        imagenes.add(listaContactos.get(2).getImagen());
+        imagenes.add(listaContactos.get(3).getImagen());
+        imagenes.add(listaContactos.get(4).getImagen());
+        imagenes.add(listaContactos.get(5).getImagen());
+
 
         names = new ArrayList<String>();
 
@@ -65,12 +84,13 @@ public class MainActivity extends AppCompatActivity {
         names.add(listaContactos.get(4).getNombre());
         names.add(listaContactos.get(5).getNombre());
 
+
         ArrayAdapter<String> adapter =
-                new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,names);
+                new ArrayAdapter<String>(this, android.R.layout.simple_list_item_2,names);
 
         lista.setAdapter(adapter);
 
-        MyAdapter myAdapter = new MyAdapter(this, R.layout.list_item, names);
+        MyAdapter myAdapter = new MyAdapter(this, R.layout.list_item, names, imagenes);
 
         lista.setAdapter(myAdapter);
 
@@ -81,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
                Intent cambioVentana = new Intent(MainActivity.this, MostrarDatos.class);
 
                Bundle bundle =new Bundle();
+                bundle.putString("IMAGEN", listaContactos.get(position).getImagen().toString());
                bundle.putString("NOMBRE", listaContactos.get(position).getNombre().toString());
                bundle.putString("APELLIDOS", listaContactos.get(position).getApellidos().toString());
                bundle.putString("TELEFONO", listaContactos.get(position).getTelefono().toString());
@@ -92,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
                startActivity(cambioVentana);
 
                 Toast.makeText(MainActivity.this,
-                        "Has pulsado: "+ names.get(position), Toast.LENGTH_LONG).show();
+                        "Has pulsado: "+ imagenes.get(position), Toast.LENGTH_LONG).show();
             }
         });
 
