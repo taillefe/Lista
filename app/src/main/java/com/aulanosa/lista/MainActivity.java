@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ListView lista;
     private ArrayList<String> names;
-    private String[] listanombres = {"Pedro","Ramón","Jose","Luisa","Antonio","Hugo"};
+  //  private String[] listanombres = {"Pedro","Ramón","Jose","Luisa","Antonio","Hugo"};
 
     private ArrayList<Contactos> listaContactos;
 
@@ -29,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //OCULTAMOS TÍTULO
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
         lista = (ListView) findViewById(R.id.eleuve);
 

@@ -4,6 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@raw/portadaburbujas"
+
     tools:context=".Portada">
 
+    <Button
+        android:id="@+id/btnLista"
+        android:layout_width="161dp"
+        android:layout_height="155dp"
+        android:background="@android:color/transparent"
+        android:textAlignment="center"
+        android:text="LISTA DE DATOS"
+        android:textColor="@android:color/white"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.69"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.756" />
 </androidx.constraintlayout.widget.ConstraintLayout>

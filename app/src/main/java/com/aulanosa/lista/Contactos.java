@@ -2,6 +2,7 @@ package com.aulanosa.lista;
 
 public class Contactos {
 
+
     String nombre;
     String apellidos;
     String telefono;

@@ -21,6 +21,13 @@ public class MostrarDatos extends AppCompatActivity {
         final EditText direccion = findViewById(R.id.edTxtDireccion);
         final EditText observaciones = findViewById(R.id.edTxtObservaciones);
 
+        Bundle bundle=getIntent().getExtras();
+        nombre.setText(bundle.getString("NOMBRE"));
+        apellidos.setText(bundle.getString("APELLIDOS"));
+        telefono.setText(bundle.getString("TELEFONO"));
+        email.setText(bundle.getString("EMAIL"));
+        direccion.setText(bundle.getString("DIRECCION"));
+        observaciones.setText(bundle.getString("OBSERVACIONES"));
 
 
 
