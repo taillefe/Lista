@@ -63,7 +63,6 @@ public class MainActivity extends AppCompatActivity {
         names.add(listaContactos.get(4).getNombre());
         names.add(listaContactos.get(5).getNombre());
 
-
         ArrayAdapter<String> adapter =
                 new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,names);
 
@@ -76,6 +75,20 @@ public class MainActivity extends AppCompatActivity {
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+
+               Intent cambioVentana = new Intent(MainActivity.this, MostrarDatos.class);
+
+               Bundle bundle =new Bundle();
+               bundle.putString("NOMBRE", listaContactos.get(position).getNombre().toString());
+               bundle.putString("APELLIDOS", listaContactos.get(position).getApellidos().toString());
+               bundle.putString("TELEFONO", listaContactos.get(position).getTelefono().toString());
+               bundle.putString("EMAIL", listaContactos.get(position).getEmail().toString());
+               bundle.putString("DIRECCION", listaContactos.get(position).getDireccion().toString());
+               bundle.putString("OBSERVACIONES", listaContactos.get(position).getObservaciones().toString());
+               cambioVentana.putExtras(bundle);
+
+               startActivity(cambioVentana);
+
                 Toast.makeText(MainActivity.this,
                         "Has pulsado: "+ names.get(position), Toast.LENGTH_LONG).show();
             }
