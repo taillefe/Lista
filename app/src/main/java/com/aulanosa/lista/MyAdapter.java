@@ -77,7 +77,7 @@ public class MyAdapter extends BaseAdapter {
 
 
             Bitmap myBitmap = BitmapFactory.decodeFile(imagenArchivo.getAbsolutePath());
-            imageView.setImageBitmap(myBitmap);
+     //       imageView.setImageBitmap(myBitmap);
 
 
 //Devolvemos la vista inflada

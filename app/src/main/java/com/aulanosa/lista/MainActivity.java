@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -114,6 +115,16 @@ public class MainActivity extends AppCompatActivity {
 
                 Toast.makeText(MainActivity.this,
                         "Has pulsado: "+ imagenes.get(position), Toast.LENGTH_LONG).show();
+            }
+        });
+
+        Button btnAjustes = (Button) findViewById(R.id.btnAjustes);
+        btnAjustes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // cuando pulsa en el boton llama a la pantalla de ajustes
+                Intent cambioVentana = new Intent(Settings.ACTION_SETTINGS);
+                startActivity(cambioVentana);
             }
         });
 
