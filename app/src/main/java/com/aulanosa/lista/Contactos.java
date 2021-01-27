@@ -4,7 +4,7 @@ import android.media.Image;
 
 public class Contactos {
 
-    String imagen;
+    int imagen;
     String nombre;
     String apellidos;
     String telefono;
@@ -12,7 +12,7 @@ public class Contactos {
     String direccion;
     String observaciones;
 
-    public Contactos(String imagen, String nombre, String apellidos, String telefono,
+    public Contactos(int imagen, String nombre, String apellidos, String telefono,
                      String email, String direccion, String observaciones) {
         this.imagen = imagen;
         this.nombre = nombre;
@@ -23,7 +23,7 @@ public class Contactos {
         this.observaciones = observaciones;
     }
 
-    public String getImagen() {
+    public int getImagen() {
         return imagen;
     }
 
@@ -51,7 +51,7 @@ public class Contactos {
         return observaciones;
     }
 
-    public void setImagen(String imagen) {
+    public void setImagen(int imagen) {
         this.imagen = imagen;
     }
 

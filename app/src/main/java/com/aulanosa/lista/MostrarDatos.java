@@ -25,7 +25,6 @@ public class MostrarDatos extends AppCompatActivity {
 
         // recibo los datos a través del bundle
 
-
        // final ImageView imagen = findViewById(R.id.imagen);
         final EditText nombre = findViewById(R.id.edTxtNombre);
         final EditText apellidos = findViewById(R.id.edTxtApellidos);
@@ -35,7 +34,7 @@ public class MostrarDatos extends AppCompatActivity {
         final EditText observaciones = findViewById(R.id.edTxtObservaciones);
 
         Bundle bundle=getIntent().getExtras();
-        String imagenActual = bundle.getString("IMAGEN");
+        Integer imagenActual = bundle.getInt("IMAGEN");
         nombre.setText(bundle.getString("NOMBRE"));
         apellidos.setText(bundle.getString("APELLIDOS"));
         telefono.setText(bundle.getString("TELEFONO"));
@@ -43,17 +42,18 @@ public class MostrarDatos extends AppCompatActivity {
         direccion.setText(bundle.getString("DIRECCION"));
         observaciones.setText(bundle.getString("OBSERVACIONES"));
 
-        Log.i("imagen",imagenActual);
+       // Log.i("imagen", String.valueOf(imagenActual));
 
         ImageView imageView = (ImageView)  this.findViewById(R.id.imagen);
+        imageView.setImageResource(imagenActual);
        //   imageView.setImageURI(Uri.parse(imagenActual));
         //  imageView.setImageBitmap(StringToBitMap(currentImagen));
 
-        File imagenArchivo= new  File(imagenActual);
+     //   File imagenArchivo= new  File(imagenActual);
         //  imageView.setImageURI(Uri.fromFile(imagenArchivo));
-        Log.i("ruta",imagenArchivo.getName());
-        Toast.makeText(this,
-                "ruta: "+ imagenArchivo.getName(), Toast.LENGTH_LONG).show();
+      //  Log.i("ruta",imagenArchivo.getName());
+       // Toast.makeText(this,
+       //         "ruta: "+ imagenArchivo.getName(), Toast.LENGTH_LONG).show();
 
      //   Bitmap myBitmap = BitmapFactory.decodeFile(imagenArchivo.getName());
       //  imageView.setImageBitmap(myBitmap);

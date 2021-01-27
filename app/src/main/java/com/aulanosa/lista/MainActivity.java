@@ -24,8 +24,9 @@ import java.util.TimerTask;
 public class MainActivity extends AppCompatActivity {
 
     private ListView lista;
+    private ArrayList<Integer> imagenes;
     private ArrayList<String> names;
-    private ArrayList<String> imagenes;
+
   //  private String[] listanombres = {"Pedro","Ramón","Jose","Luisa","Antonio","Hugo"};
 
     private ArrayList<Contactos> listaContactos;
@@ -46,17 +47,17 @@ public class MainActivity extends AppCompatActivity {
         //        foto = ImageIO.read(blob.getBinaryStream());
 
 
-        Contactos contacto1 = new Contactos("C:\\Users\\PC33\\Desktop\\emoji.png","Pedro", "Perez", "444555666","pedro@gmail.com",
+        Contactos contacto1 = new Contactos(R.drawable.emoji,"Pedro", "Perez", "444555666","pedro@gmail.com",
                 "libertad, 3", "perfecto");
-        Contactos contacto2 = new Contactos("@raw/emoji.png","Ramón", "Rodriguez", "333555666","ramon@gmail.com",
+        Contactos contacto2 = new Contactos(R.drawable.avatarsenor,"Ramón", "Rodriguez", "333555666","ramon@gmail.com",
                 "camelias, 1", "imperfecto");
-        Contactos contacto3 = new Contactos("@raw/emoji.png","Jose", "Blanco", "444555444","jose@gmail.com",
+        Contactos contacto3 = new Contactos(R.drawable.hombre,"Jose", "Blanco", "444555444","jose@gmail.com",
                 "rosas, 23", "tranquilo");
-        Contactos contacto4 = new Contactos("@raw/emoji.png","Luisa", "Gutierrez", "666555666","luisa@gmail.com",
+        Contactos contacto4 = new Contactos(R.drawable.mujer,"Luisa", "Gutierrez", "666555666","luisa@gmail.com",
                 "colon, 3", "locuaz");
-        Contactos contacto5 = new Contactos("@raw/emoji.png","Antonio", "Lopez", "777555666","antonio@gmail.com",
+        Contactos contacto5 = new Contactos(R.drawable.hombregafas,"Antonio", "Lopez", "777555666","antonio@gmail.com",
                 "real, 9", "grandioso");
-        Contactos contacto6 = new Contactos("@raw/emoji.png","Hugo", "García", "888555666","hugo@gmail.com",
+        Contactos contacto6 = new Contactos(R.drawable.mujergafas,"Ana", "García", "888555666","hugo@gmail.com",
                 "lugar, 6", "fenomenal");
 
         listaContactos.add(contacto1);
@@ -66,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         listaContactos.add(contacto5);
         listaContactos.add(contacto6);
 
-        imagenes = new ArrayList<String>();
+        imagenes = new ArrayList<Integer>();
 
         imagenes.add(listaContactos.get(0).getImagen());
         imagenes.add(listaContactos.get(1).getImagen());
@@ -102,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
                Intent cambioVentana = new Intent(MainActivity.this, MostrarDatos.class);
 
                Bundle bundle =new Bundle();
-                bundle.putString("IMAGEN", listaContactos.get(position).getImagen().toString());
+                bundle.putInt("IMAGEN", listaContactos.get(position).getImagen());
                bundle.putString("NOMBRE", listaContactos.get(position).getNombre().toString());
                bundle.putString("APELLIDOS", listaContactos.get(position).getApellidos().toString());
                bundle.putString("TELEFONO", listaContactos.get(position).getTelefono().toString());
@@ -113,8 +114,8 @@ public class MainActivity extends AppCompatActivity {
 
                startActivity(cambioVentana);
 
-                Toast.makeText(MainActivity.this,
-                        "Has pulsado: "+ imagenes.get(position), Toast.LENGTH_LONG).show();
+          //      Toast.makeText(MainActivity.this,
+           //             "Has pulsado: "+ imagenes.get(position), Toast.LENGTH_LONG).show();
             }
         });
 

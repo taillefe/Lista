@@ -21,9 +21,9 @@ public class MyAdapter extends BaseAdapter {
     private Context context;
     private int layout;
     private ArrayList<String> names;
-    private ArrayList<String> imagenes;
+    private ArrayList<Integer> imagenes;
 
-    public MyAdapter(Context context, int layout, ArrayList<String> names,ArrayList<String> imagenes) {
+    public MyAdapter(Context context, int layout, ArrayList<String> names,ArrayList<Integer> imagenes) {
         this.context = context;
         this.layout = layout;
         this.names = names;
@@ -60,25 +60,22 @@ public class MyAdapter extends BaseAdapter {
 
        //lo mismo para la imagen
         // Valor actual según la posición
-        String currentImagen = imagenes.get(position);
+        Integer currentImagen = imagenes.get(position);
 // Referenciamos el elemento a modificar y lo rellenamos
+
+        int numero = R.drawable.avatarsenor;  // esto se puede meter en el setImageResource
         @SuppressLint("WrongViewCast") ImageView imageView = (ImageView) v.findViewById(R.id.imageView);
+        imageView.setImageResource(currentImagen);
       //  imageView.setImageURI(Uri.parse(currentImagen));
       //  imageView.setImageBitmap(StringToBitMap(currentImagen));
 
-        File imagenArchivo= new  File(currentImagen);
+       // File imagenArchivo= new  File(currentImagen);
       //  imageView.setImageURI(Uri.fromFile(imagenArchivo));
 
+      //  Log.i("ruta",imagenArchivo.getAbsolutePath());
 
-
-        Log.i("ruta",imagenArchivo.getAbsolutePath());
-
-
-
-
-            Bitmap myBitmap = BitmapFactory.decodeFile(imagenArchivo.getAbsolutePath());
-     //       imageView.setImageBitmap(myBitmap);
-
+         //   Bitmap myBitmap = BitmapFactory.decodeFile(imagenArchivo.getAbsolutePath());
+          //  imageView.setImageBitmap(myBitmap);
 
 //Devolvemos la vista inflada
         return v;
